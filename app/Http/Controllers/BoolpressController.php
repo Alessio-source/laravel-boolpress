@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
 
 class BoolpressController extends Controller
 {
@@ -25,7 +26,9 @@ class BoolpressController extends Controller
      */
     public function create()
     {
-        //
+        $tags = Tag::all();
+
+        return view('create', compact('tags'));
     }
 
     /**

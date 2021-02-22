@@ -16,14 +16,18 @@
                     <p>{{ $post->info->created_at }}</p>
 
                     <p>commento:</p>
-                    @foreach($post->comment as $item)
-                        <p>{{ $item->comment }}</p>
-                        <h4>{{ $item->author }}</h4>
-                    @endforeach
+                    @if ($post->comment != null)
+                        @foreach($post->comment as $item)
+                            <p>{{ $item->comment }}</p>
+                            <h4>{{ $item->author }}</h4>
+                        @endforeach
+                    @endif
 
                     <hr>
                 </section>
             @endforeach
+
+            <a href="{{ route('create') }}">Aggiungi</a>
         </main>
     </body>
 </html>
