@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
+use App\InfoPost;
 
 class BoolpressController extends Controller
 {
@@ -39,7 +40,23 @@ class BoolpressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        $post = new Post();
+        $post->text = $data["text"];
+        $post->author = $data["author"];
+
+        $post->save();
+
+        $info = new InfoPost();
+        $info->post_id = $post->id;
+        $info->save();
+
+        if(!empty($data["tags"])) {
+            $post->tags()->attach($data["tags"]);
+        }
+
+        return redirect()->route('index');
     }
 
     /**

@@ -8,6 +8,10 @@ class Post extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = [
+        'text',
+        'author'
+    ];
     public function info() {
         return $this->hasOne('App\InfoPost');
     }
