@@ -16,7 +16,7 @@
             @foreach ($tags as $tag)
                 <div>
                     <label for="{{ $tag->slug }}">{{ $tag->name }}</label>
-                    <input type="checkbox" name="tags[]" id="{{ $tag->slug }}" value="{{ $tag->id }}">
+                    <input @if ($post->tags->contains($tag->id)) checked @endif type="checkbox" name="tags[]" id="{{ $tag->slug }}" value="{{ $tag->id }}">
                 </div>
             @endforeach
         @else
