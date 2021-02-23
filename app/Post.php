@@ -12,6 +12,7 @@ class Post extends Model
         'text',
         'author'
     ];
+    
     public function info() {
         return $this->hasOne('App\InfoPost');
     }

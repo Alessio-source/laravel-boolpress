@@ -14,6 +14,7 @@
                     <h4>{{ $post->author }}</h4>
 
                     <p>{{ $post->info->created_at }}</p>
+                    <a href="{{ route('blog.edit', $post->id) }}">Modifica post</a>
 
                     <p>commento:</p>
                     @if ($post->comment != null)
@@ -27,7 +28,7 @@
                 </section>
             @endforeach
 
-            <a href="{{ route('create') }}">Aggiungi</a>
+            <a href="{{ route('blog.create') }}">Aggiungi</a>
         </main>
     </body>
 </html>

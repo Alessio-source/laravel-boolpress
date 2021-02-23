@@ -56,7 +56,7 @@ class BoolpressController extends Controller
             $post->tags()->attach($data["tags"]);
         }
 
-        return redirect()->route('index');
+        return redirect()->route('blog.index');
     }
 
     /**
@@ -78,7 +78,9 @@ class BoolpressController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $tags = Tag::all();
+        return view('edit', compact('post', 'tags'));
     }
 
     /**
