@@ -92,7 +92,18 @@ class BoolpressController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $post = Post::find($id);
+        $post->update($data);
+
+        if(!empty($data['tags']) ) {
+            $post->tags()->sync($data['tags']);
+        } else {
+            $post->tags()->detach();
+        }
+
+        return redirect()->route('blog.index');
     }
 
     /**

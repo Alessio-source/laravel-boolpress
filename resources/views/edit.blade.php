@@ -3,9 +3,9 @@
 @section('title', 'Modifica post')
 
 @section('content')
-    <form action="" method="post">
+    <form action="{{ route('blog.update', $post->id) }}" method="post">
         @csrf
-        @method('POST')
+        @method('PUT')
         <label for="text">Testo</label>
         <textarea name="text" id="text" placeholder="Inserisci un testo" cols="30">{{ $post->text }}</textarea>
 
@@ -24,7 +24,7 @@
         @endif
 
         <div class="buttons">
-            <input type="submit" value="Aggiungi" class="btn-blue">
+            <input type="submit" value="Modifica" class="btn-blue">
             <a href="{{ route('blog.index') }}" class="btn-blue">Torna alla home</a>
         </div>
     </form>
