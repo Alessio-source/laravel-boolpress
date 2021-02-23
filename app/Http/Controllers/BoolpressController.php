@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
 use App\InfoPost;
+use Carbon\Carbon;
 
 class BoolpressController extends Controller
 {
@@ -103,7 +104,10 @@ class BoolpressController extends Controller
             $post->tags()->detach();
         }
 
-        return redirect()->route('blog.index');
+        $time = new Carbon();
+        $now = $time::now();
+
+        return redirect()->route('blog.index')->with('status', 'Post ' . $post->id . " modificato con successo all'orario: " . $now);
     }
 
     /**

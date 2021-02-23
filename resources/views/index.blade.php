@@ -8,6 +8,13 @@
     </head>
     <body>
         <main>
+
+        @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             @foreach ($data as $post)
                 <section class="post">
                     <p>{{ $post->text }}</p>
